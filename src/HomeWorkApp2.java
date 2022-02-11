@@ -1,3 +1,9 @@
+/**
+ * Вторая домашка
+ *
+ * @author pitmak
+ * @version 11.02.2022
+ */
 public class HomeWorkApp2 {
     public static void main(String[] args) {
         System.out.println(checkSum1020(1, 3));
