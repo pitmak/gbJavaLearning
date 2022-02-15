@@ -1,9 +1,15 @@
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Третья домашка
+ *
+ * @author pitmak
+ * @version 15.02.2022
+ */
 public class HomeWorkApp3 {
     public static void main(String[] args) {
-        System.out.println("Задача 1: Инверсия массива");
+        System.out.println("\nЗадача 1: Инверсия массива");
         doArrayInverse();
 
         System.out.println("\nЗадача 2: Заполнение массива");
@@ -42,6 +48,7 @@ public class HomeWorkApp3 {
 
     static void doArrayInverse() {
         int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+
         System.out.println(Arrays.toString(arr));
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (arr[i] == 0) ? 1 : 0;
@@ -51,6 +58,7 @@ public class HomeWorkApp3 {
 
     static void doArrayFilling() {
         int[] arr = new int[100];
+
         for (int i = 0; i < arr.length; ) {
             arr[i] = ++i;
         }
@@ -59,6 +67,7 @@ public class HomeWorkApp3 {
 
     static void doArrayModify() {
         int[] arr = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+
         System.out.println(Arrays.toString(arr));
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] < 6) {
@@ -70,6 +79,7 @@ public class HomeWorkApp3 {
 
     static void doSquareArray() {
         int[][] arr = new int[6][6];
+
         for (int i = 0; i < arr.length; i++) {
             arr[i][i] = 1;
             arr[i][arr.length - i - 1] = 1;
@@ -79,6 +89,7 @@ public class HomeWorkApp3 {
 
     static int[] createArray(int len, int initialValue) {
         int[] arr = new int[len];
+
         for (int i = 0; i < len; i++) {
             arr[i] = initialValue;
         }
@@ -96,6 +107,7 @@ public class HomeWorkApp3 {
         for (int i = 0; i < ARR_SIZE; i++) {
             arr[i] = rnd.nextInt(MAX_VALUE);
         }
+
         for (int i = 0; i < ARR_SIZE; i++) {
             if (arr[i] < min) {
                 min = arr[i];
@@ -104,6 +116,7 @@ public class HomeWorkApp3 {
                 max = arr[i];
             }
         }
+
         System.out.println(Arrays.toString(arr));
         System.out.printf("Максимум в массиве: %s\n", max);
         System.out.printf("Минимум в массиве: %s\n", min);
@@ -139,19 +152,18 @@ public class HomeWorkApp3 {
         return gcd(b, a % b);
     }
 
-    static int norm(int num, int bound) {
-        return (num + bound*bound) % bound;
-    }
-
     static void shiftArray(int[] arr, int n) {
         int repeat = gcd(arr.length, n);
-        int iterSize = arr.length / repeat-1;
+        int stepCount = arr.length / repeat - 1;
         for (int i = 0; i < repeat; i++) {
-            int backup = arr[i];
-            for (int j = 0; j < iterSize; j++) {
-                arr[norm(i + j * n, arr.length)] = arr[norm(i + (j+1) * n, arr.length)];
+            int currPos = i;
+            int backup = arr[currPos];
+            for (int j = 0; j < stepCount; j++) {
+                int nextPos = (currPos + n + arr.length) % arr.length;
+                arr[currPos] = arr[nextPos];
+                currPos = nextPos;
             }
-            arr[norm(i + iterSize*n, arr.length)] = backup;
+            arr[currPos] = backup;
         }
     }
 }
