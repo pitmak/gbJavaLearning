@@ -9,6 +9,8 @@ import java.util.Random;
  */
 public class HomeWorkApp3 {
     public static void main(String[] args) {
+        String s = 2+2+"sdf";
+        System.out.println(s);
         System.out.println("\nЗадача 1: Инверсия массива");
         doArrayInverse();
 
