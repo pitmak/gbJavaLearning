@@ -18,7 +18,7 @@ public class TicTacToeHard {
     Random rand;
 
     public static void main(String[] args) {
- //        new TicTacToeHard(3, 3).doGame();
+//        new TicTacToeHard(3, 3).doGame();
         new TicTacToeHard(5, 4).doGame();
     }
 
